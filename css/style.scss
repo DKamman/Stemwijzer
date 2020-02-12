@@ -1,0 +1,76 @@
+.main-content {
+    background-color: blue;
+    background-image: url('../img/background-1024.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+    height: 100vh;
+    padding: 5rem 20rem;
+
+    .wijzer {
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+        z-index: 3001;
+        .stemwijzerstart {
+            padding: 5rem 6.5rem 2.5rem;
+            background-color: white;
+    
+            .row {
+                margin-bottom: 1rem;
+            }
+    
+            img {
+                width: 40%;
+            }
+    
+            h4, h5 {
+                margin-bottom: 1rem;
+            }
+    
+            h4 {
+                color: #01b4dc;
+            }
+    
+            .content {
+                width: 50%;
+                
+                p {
+                    margin: 0;
+                    font-size: 1rem;
+                }
+            }
+    
+            .text-align-right {
+                text-align: right;
+            }
+    
+            button {
+                background-color: black;
+                border: solid 1px grey;
+                border-radius: 5px;
+                color: white;
+                padding: 1rem 4rem;
+                font-size: 1.5rem;
+                font-weight: bold;
+                transition: background-color .2s ease;
+    
+                &:hover {
+                    background-color: #018aa9;
+                }
+            }
+        }
+    
+        .intro {
+            background-color: white;
+            padding: 2.5rem;
+            border-top: dashed 1px grey;
+    
+            img {
+                margin-bottom: 1rem;
+                border-bottom: solid 2px white;
+    
+                &:hover {
+                    border-bottom: solid 2px black;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+.main-content {
+  background-color: blue;
+  background-image: url("../img/background-1024.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  height: 100vh;
+  padding: 5rem 20rem; }
+  .main-content .wijzer {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    z-index: 3001; }
+    .main-content .wijzer .stemwijzerstart {
+      padding: 5rem 6.5rem 2.5rem;
+      background-color: white; }
+      .main-content .wijzer .stemwijzerstart .row {
+        margin-bottom: 1rem; }
+      .main-content .wijzer .stemwijzerstart img {
+        width: 40%; }
+      .main-content .wijzer .stemwijzerstart h4, .main-content .wijzer .stemwijzerstart h5 {
+        margin-bottom: 1rem; }
+      .main-content .wijzer .stemwijzerstart h4 {
+        color: #01b4dc; }
+      .main-content .wijzer .stemwijzerstart .content {
+        width: 50%; }
+        .main-content .wijzer .stemwijzerstart .content p {
+          margin: 0;
+          font-size: 1rem; }
+      .main-content .wijzer .stemwijzerstart .text-align-right {
+        text-align: right; }
+      .main-content .wijzer .stemwijzerstart button {
+        background-color: black;
+        border: solid 1px grey;
+        border-radius: 5px;
+        color: white;
+        padding: 1rem 4rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: background-color .2s ease; }
+        .main-content .wijzer .stemwijzerstart button:hover {
+          background-color: #018aa9; }
+    .main-content .wijzer .intro {
+      background-color: white;
+      padding: 2.5rem;
+      border-top: dashed 1px grey; }
+      .main-content .wijzer .intro img {
+        margin-bottom: 1rem;
+        border-bottom: solid 2px white; }
+        .main-content .wijzer .intro img:hover {
+          border-bottom: solid 2px black; }
+
+/*# sourceMappingURL=style.css.map */

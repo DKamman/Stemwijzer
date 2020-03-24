@@ -73,4 +73,14 @@
             }
         }
     }
+
+    .lijst {
+        background-color: white;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+        z-index: 3001;
+
+        #content {
+            padding: 5rem 6.5rem 2.5rem;
+        }
+    }
 }

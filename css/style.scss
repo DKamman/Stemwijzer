@@ -9,6 +9,9 @@
     .wijzer {
         box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
         z-index: 3001;
+        width: 1000px;
+        margin: 0 auto;
+
         .stemwijzerstart {
             padding: 5rem 6.5rem 2.5rem;
             background-color: white;
@@ -78,9 +81,55 @@
         background-color: white;
         box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
         z-index: 3001;
+        width: 1000px;
+        margin: 0 auto;
 
         #content {
-            padding: 5rem 6.5rem 2.5rem;
+            padding: 5rem 6.5rem 0rem;
+            min-height: 450px;
+
+            #title {
+                font-size: 2rem;
+                color: #01b4dc;
+                font-weight: bold;
+                padding: 3rem 4rem 1rem;
+            }
+
+            #statement {
+                padding: 0rem 4rem 1rem;
+                font-size: 2rem;
+            }
+
+            #previous {
+                border-radius: 50%;
+                border: none;
+                height: 50px;
+                width: 50px;
+                font-weight: bold;
+            }
+        }
+
+        .buttons {
+            background-color: white;
+            padding-left: 10.5rem;
+            padding-bottom: 6.5rem;
+            padding-top: 5rem;
+
+            button {
+                margin-right: 1rem;
+                border: none;
+                background-color: black;
+                color: white;
+                font-weight: bold;
+                padding: 0.75rem 3rem;
+                font-size: 1.5rem;
+                border-radius: 5px;
+                transition: background-color .2s ease;
+
+                &:hover {
+                    background-color: #018aa9;
+                }
+            }
         }
     }
 }

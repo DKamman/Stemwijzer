@@ -81,7 +81,7 @@
         background-color: white;
         box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
         z-index: 3001;
-        width: 1000px;
+        width: 1300px;
         margin: 0 auto;
 
         #content {
@@ -114,6 +114,12 @@
             padding-left: 10.5rem;
             padding-bottom: 6.5rem;
             padding-top: 5rem;
+
+            #skip {
+                background-color: white;
+                color: grey;
+                padding-right: 0;
+            }
 
             button {
                 margin-right: 1rem;

@@ -22,32 +22,44 @@ function displayStatement(index) {
 
 function agreeQuestion() {
     anwsers[index] = 'Eens';
-    indexCheck();
     displayStatement(index);
 
     console.log(index);
 
-    checkEnd()
+    indexCheck();
+    checkEnd();
 }
 
 function disagreeQuestion() {
     anwsers[index] = 'Oneens';
-    indexCheck();
     displayStatement(index);
 
     console.log(index);
 
-    checkEnd()
+    indexCheck();
+    checkEnd();
 }
 
 function neutralQuestion() {
     anwsers[index] = 'Neutraal';
-    indexCheck();
     displayStatement(index);
 
     console.log(index);
 
-    checkEnd()
+    indexCheck();
+    checkEnd();
+}
+
+function skipQuestion() {
+    anwsers[index] = '';
+
+    displayStatement(index);
+
+    console.log(anwsers);
+
+    indexCheck();
+    checkEnd();
+
 }
 
 function previousQuestion() {

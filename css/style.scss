@@ -106,6 +106,16 @@
                 height: 50px;
                 width: 50px;
                 font-weight: bold;
+                margin-left: 5px;
+                transition: margin-left .25s ease;
+
+                &:hover {
+                    margin-left: 0px;    
+                }
+
+                img {
+                    width: 25px;
+                }
             }
         }
 
@@ -119,6 +129,11 @@
                 background-color: white;
                 color: grey;
                 padding-right: 0;
+                transition: padding-right .25s ease;
+
+                &:hover {
+                    padding-right: 10px;
+                }
             }
 
             button {
@@ -134,6 +149,13 @@
 
                 &:hover {
                     background-color: #018aa9;
+                }
+            }
+
+            span {
+                img {
+                    width: 25px;
+                    margin-bottom: 5px;
                 }
             }
         }

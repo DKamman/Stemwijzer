@@ -70,7 +70,13 @@
         border: none;
         height: 50px;
         width: 50px;
-        font-weight: bold; }
+        font-weight: bold;
+        margin-left: 5px;
+        transition: margin-left .25s ease; }
+        .main-content .lijst #content #previous:hover {
+          margin-left: 0px; }
+        .main-content .lijst #content #previous img {
+          width: 25px; }
     .main-content .lijst .buttons {
       background-color: white;
       padding-left: 10.5rem;
@@ -79,7 +85,10 @@
       .main-content .lijst .buttons #skip {
         background-color: white;
         color: grey;
-        padding-right: 0; }
+        padding-right: 0;
+        transition: padding-right .25s ease; }
+        .main-content .lijst .buttons #skip:hover {
+          padding-right: 10px; }
       .main-content .lijst .buttons button {
         margin-right: 1rem;
         border: none;
@@ -92,5 +101,8 @@
         transition: background-color .2s ease; }
         .main-content .lijst .buttons button:hover {
           background-color: #018aa9; }
+      .main-content .lijst .buttons span img {
+        width: 25px;
+        margin-bottom: 5px; }
 
 /*# sourceMappingURL=style.css.map */

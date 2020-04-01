@@ -3,6 +3,7 @@ var index = 0;
 
 function startStemWijzer () {
     console.log(subjects);
+    console.log(parties);
 
     var start = document.getElementById('start');
     start.remove();
@@ -26,6 +27,7 @@ function agreeQuestion() {
     displayStatement(index);
 
     console.log(anwsers);
+    console.log(anwsers.length);
     checkEnd();
 }
 
@@ -62,8 +64,19 @@ function previousQuestion() {
     }
 
     console.log(anwsers);
+    // anwserCheck();
     displayStatement(index);
 }
+
+// function anwserCheck() {
+//     if (anwsers[index] = 'Eens') {
+//         var agree = document.getElementById('agree');
+//         agree.style.backgroundColor = '#018aa9';
+//     } else { 
+//         agree.style.backgroundColor = 'black';
+
+//     }
+// }
 
 function indexCheck() {
     if (index < 29) {
@@ -71,11 +84,11 @@ function indexCheck() {
     }
 }
 
-
 function checkEnd() {
     if (index == '29') {
-        console.log('This Is The End');
-
+        if (anwsers.length == 30) {
+            console.log('This Is The End');
+        }
     }
 }
 

@@ -1,78 +1,120 @@
-var anwsers = [];
+var answers = [];
 var index = 0;
+
+var agree = document.getElementById('agree');
+var disagree = document.getElementById('disagree');
+var neutral = document.getElementById('neutral');
+
+var start = document.getElementById('start');
+var list = document.getElementById('list');
 
 function startStemWijzer () {
     console.log(subjects);
     console.log(parties);
-
-    var start = document.getElementById('start');
     start.remove();
-
-    var list = document.getElementById('list');
     list.style.display = 'block';
-
     displayStatement(0);
 }
 
 function displayStatement(index) {
+    debuggAnswers();
     var title = document.getElementById('title');
     var statement = document.getElementById('statement');
     title.innerHTML = (index+1).toString() + '. ' + subjects[index].title;
     statement.innerHTML = subjects[index].statement;
+
+    answerCheck();
+}
+
+function displayResults() {
+    // list.style.display = 'block';
+    var title = document.getElementById('title');
+    var statement = document.getElementById('statement');
+    title.innerHTML = 'Uw mening komt het best overeen met:';
+    statement.innerHTML = 'test';
 }
 
 function agreeQuestion() {
-    anwsers[index] = 'Eens';
+    answers[index] = 'pro';
+    checkEnd();
+
     indexCheck();
     displayStatement(index);
 
-    console.log('awnsers: ' + anwsers.length);
-    console.log('index: ' + index);
-
-    checkEnd();
+    // debugg();
 }
 
 function disagreeQuestion() {
-    anwsers[index] = 'Oneens';
+    answers[index] = 'contra';
+    checkEnd();
+
     indexCheck();
     displayStatement(index);
-
-    checkEnd();
 }
 
 function neutralQuestion() {
-    anwsers[index] = 'Neutraal';
+    answers[index] = 'none';
+    checkEnd();
+
     indexCheck();
     displayStatement(index);
-
-    checkEnd();
 }
 
 function skipQuestion() {
-    anwsers[index] = '';
+    answers[index] = '';
+    checkEnd();
+
     indexCheck();
     displayStatement(index);
-
-    checkEnd();
 }
 
 function previousQuestion() {
     if (index > 0) {
         index--;        
     }
-    // anwserCheck();
     displayStatement(index);
 }
 
-// function anwserCheck() {
-//     if (anwsers[index] = 'Eens') {
-//         var agree = document.getElementById('agree');
-//         agree.style.backgroundColor = '#018aa9';
-//     } else { 
-//         agree.style.backgroundColor = 'black';
+function answerCheck() {
+    switch(answers[index]) {
+        case 'pro':
+            agree.classList.add('selectedButton');
+            disagree.classList.add('unselectedButton');
+            neutral.classList.add('unselectedButton');
 
-//     }
-// }
+            agree.classList.remove('unselectedButton');
+            disagree.classList.remove('selectedButton');
+            neutral.classList.remove('selectedButton');
+            break;
+        case 'contra':
+            disagree.classList.add('selectedButton');
+            agree.classList.add('unselectedButton');
+            neutral.classList.add('unselectedButton');
+
+            agree.classList.remove('selectedButton');
+            disagree.classList.remove('unselectedButton');
+            neutral.classList.remove('selectedButton');
+            break;
+        case 'none':
+            neutral.classList.add('selectedButton');
+            agree.classList.add('unselectedButton');
+            disagree.classList.add('unselectedButton');
+
+            agree.classList.remove('selectedButton');
+            disagree.classList.remove('selectedButton');
+            neutral.classList.remove('unselectedButton');
+            break;
+        default:
+            agree.classList.add('unselectedButton');
+            disagree.classList.add('unselectedButton');
+            neutral.classList.add('unselectedButton');
+
+            agree.classList.remove('selectedButton');
+            disagree.classList.remove('selectedButton');
+            neutral.classList.remove('selectedButton');
+            break;     
+    }
+}
 
 function indexCheck() {
     if (index < 29) {
@@ -81,12 +123,19 @@ function indexCheck() {
 }
 
 function checkEnd() {
-    if (index == '29') {
-        if (anwsers.length == 30) {
-            console.log('This Is The End');
-        }
+    if (index == 29 && answers.length == 30) {
+        console.log('This is the end');
+        displayResults();
     }
 }
 
+function debugg() {
+    console.log('awnsers: ' + answers.length);
+    console.log('index: ' + index);
+}
+
+function debuggAnswers() {
+    console.log(answers);
+}
 
 

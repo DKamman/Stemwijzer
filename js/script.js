@@ -26,8 +26,9 @@ function agreeQuestion() {
     indexCheck();
     displayStatement(index);
 
-    console.log(anwsers);
-    console.log(anwsers.length);
+    console.log('awnsers: ' + anwsers.length);
+    console.log('index: ' + index);
+
     checkEnd();
 }
 
@@ -36,7 +37,6 @@ function disagreeQuestion() {
     indexCheck();
     displayStatement(index);
 
-    console.log(anwsers);
     checkEnd();
 }
 
@@ -45,7 +45,6 @@ function neutralQuestion() {
     indexCheck();
     displayStatement(index);
 
-    console.log(anwsers);
     checkEnd();
 }
 
@@ -54,7 +53,6 @@ function skipQuestion() {
     indexCheck();
     displayStatement(index);
 
-    console.log(anwsers);
     checkEnd();
 }
 
@@ -62,8 +60,6 @@ function previousQuestion() {
     if (index > 0) {
         index--;        
     }
-
-    console.log(anwsers);
     // anwserCheck();
     displayStatement(index);
 }

@@ -1,5 +1,11 @@
 var answers = [];
 var index = 0;
+var results = false;
+
+var title = document.getElementById('title');
+var statement = document.getElementById('statement');
+
+var buttons = document.getElementById('buttonBlock');
 
 var agree = document.getElementById('agree');
 var disagree = document.getElementById('disagree');
@@ -17,21 +23,17 @@ function startStemWijzer () {
 }
 
 function displayStatement(index) {
-    debuggAnswers();
-    var title = document.getElementById('title');
-    var statement = document.getElementById('statement');
     title.innerHTML = (index+1).toString() + '. ' + subjects[index].title;
     statement.innerHTML = subjects[index].statement;
 
     answerCheck();
+    debuggAnswers();
 }
 
 function displayResults() {
-    // list.style.display = 'block';
-    var title = document.getElementById('title');
-    var statement = document.getElementById('statement');
-    title.innerHTML = 'Uw mening komt het best overeen met:';
-    statement.innerHTML = 'test';
+    buttons.style.display = 'none';
+    title.style.display = 'none';
+    statement.style.display = 'none';
 }
 
 function agreeQuestion() {
@@ -69,10 +71,17 @@ function skipQuestion() {
 }
 
 function previousQuestion() {
-    if (index > 0) {
+    if (results === true) {
+        index = 29;
+        buttons.style.display = 'block';
+        title.style.display = 'block';
+        statement.style.display = 'block';
+    }
+    if (results === false && index > 0) {
         index--;        
     }
     displayStatement(index);
+    results = false;
 }
 
 function answerCheck() {
@@ -125,7 +134,9 @@ function indexCheck() {
 function checkEnd() {
     if (index == 29 && answers.length == 30) {
         console.log('This is the end');
+        results = true;
         displayResults();
+        // answerMatch();
     }
 }
 
@@ -136,6 +147,12 @@ function debugg() {
 
 function debuggAnswers() {
     console.log(answers);
+}
+
+function answerMatch() {
+    answers.forEach((answer,i) => {
+        console.log(i + ' = ' + answer);
+    });
 }
 
 

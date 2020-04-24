@@ -40,6 +40,7 @@ function agreeQuestion() {
     answers[index] = 'pro';
     checkEnd();
 
+    console.log(subjects.length);
     indexCheck();
     displayStatement(index);
 
@@ -72,7 +73,7 @@ function skipQuestion() {
 
 function previousQuestion() {
     if (results === true) {
-        index = 29;
+        index = (subjects.length-1);
         buttons.style.display = 'block';
         title.style.display = 'block';
         statement.style.display = 'block';
@@ -132,7 +133,7 @@ function indexCheck() {
 }
 
 function checkEnd() {
-    if (index == 29 && answers.length == 30) {
+    if (index == (subjects.length-1) && answers.length == subjects.length) {
         console.log('This is the end');
         results = true;
         displayResults();
@@ -140,19 +141,18 @@ function checkEnd() {
     }
 }
 
-function debugg() {
-    console.log('awnsers: ' + answers.length);
-    console.log('index: ' + index);
-}
-
-function debuggAnswers() {
-    console.log(answers);
-}
-
+// The answerMatch function goes over all your answers and matches them to the opinions of the parties
 function answerMatch() {
     answers.forEach((answer,i) => {
         console.log(i + ' = ' + answer);
     });
 }
 
+function debuggAnswers() {
+    console.log(answers);
+}
 
+function debugg() {
+    console.log('awnsers: ' + answers.length);
+    console.log('index: ' + index);
+}

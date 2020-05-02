@@ -14,6 +14,8 @@ var neutral = document.getElementById('neutral');
 var start = document.getElementById('start');
 var list = document.getElementById('list');
 
+var end = document.getElementById('result');
+
 function startStemWijzer () {
     console.log(subjects);
     console.log(parties);
@@ -27,20 +29,24 @@ function displayStatement(index) {
     statement.innerHTML = subjects[index].statement;
 
     answerCheck();
-    debuggAnswers();
+    // debuggAnswers();
 }
 
 function displayResults() {
     buttons.style.display = 'none';
     title.style.display = 'none';
     statement.style.display = 'none';
+
+    end.style.display = 'block';
+
+    answerMatch();
 }
 
 function agreeQuestion() {
     answers[index] = 'pro';
     checkEnd();
 
-    console.log(subjects.length);
+    console.log("questions amount: " + subjects.length);
     indexCheck();
     displayStatement(index);
 
@@ -77,6 +83,7 @@ function previousQuestion() {
         buttons.style.display = 'block';
         title.style.display = 'block';
         statement.style.display = 'block';
+        end.style.display = 'none';
     }
     if (results === false && index > 0) {
         index--;        
@@ -127,7 +134,7 @@ function answerCheck() {
 }
 
 function indexCheck() {
-    if (index < 29) {
+    if (index < (subjects.length-1)) {
         index++;
     }
 }
@@ -146,8 +153,14 @@ function answerMatch() {
     answers.forEach((answer,i) => {
         console.log(i + ' = ' + answer);
     });
+
+    //loop through anwsers
+        // loop through subject opinions
+        // match all subject opionion with looped answer
 }
 
+
+//debugging
 function debuggAnswers() {
     console.log(answers);
 }

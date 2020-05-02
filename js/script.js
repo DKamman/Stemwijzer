@@ -150,8 +150,14 @@ function checkEnd() {
 
 // The answerMatch function goes over all your answers and matches them to the opinions of the parties
 function answerMatch() {
-    answers.forEach((answer,i) => {
-        console.log(i + ' = ' + answer);
+    
+
+    answers.forEach((answer,i) => {                     // Loops through anwsers
+        console.log(i + ' answer = ' + answer);
+        subjects.forEach((opinion,i) => {               // Loops through subjects per eacht anwser
+            console.log(i + ' position = ' + opinion);
+        });
+        
     });
 
     //loop through anwsers

@@ -45,8 +45,7 @@ function displayResults() {
 function agreeQuestion() {
     answers[index] = 'pro';
     checkEnd();
-
-    console.log("questions amount: " + subjects.length);
+    
     indexCheck();
     displayStatement(index);
 
@@ -150,19 +149,28 @@ function checkEnd() {
 
 // The answerMatch function goes over all your answers and matches them to the opinions of the parties
 function answerMatch() {
-    
 
-    answers.forEach((answer,i) => {                     // Loops through anwsers
-        console.log(i + ' answer = ' + answer);
-        subjects.forEach((opinion,i) => {               // Loops through subjects per eacht anwser
-            console.log(i + ' position = ' + opinion);
+    // Resets all party vote point to 0 at the beginning of the answerMatch() function
+    parties.forEach((party) => {
+        party.votes = 0;
+
+        console.log(party.name + ' ' + party.votes)
+    })
+
+    answers.forEach((answer, indexAnswer) => {                                                           // Loops through anwsers
+        console.log('Answer to question ' + (indexAnswer+1) + ' = ' + answer);
+
+        subjects[indexAnswer].parties.forEach((party, indexParty) => {                                   // Loops through subjects per eacht anwser        
+            console.log('Position of ' + party.name + ' = ' + party.position);
+
         });
         
-    });
-
-    //loop through anwsers
-        // loop through subject opinions
-        // match all subject opionion with looped answer
+    });    
+    
+    // console logs all assigned vote points    
+    parties.forEach((party) => {
+        console.log(party.name + ' ' + party.votes);
+    })
 }
 
 

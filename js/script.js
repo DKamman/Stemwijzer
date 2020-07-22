@@ -70,7 +70,7 @@ function previousQuestion() {
         buttons.style.display = 'block';
         title.style.display = 'block';
         statement.style.display = 'block';
-        end.style.display = 'none';
+        result.style.display = 'none';
     }
     if (results === false && index > 0) {
         index--;        
@@ -172,10 +172,26 @@ function answerMatch() {
             }
         });
         
-    });    
+    });
+
+    // Sort parties on votes
+    function compare(a, b) {
+        const aVotes = a.votes;
+        const bVotes = b.votes;
+
+        let comparison = 0;
+        if (aVotes < bVotes) {
+            comparison = 1;
+        } else if (aVotes > bVotes) {
+            comparison = -1;
+        }
+        return comparison;
+    }
+
+    var sortedParties = parties.slice().sort(compare);
     
     // console logs all assigned vote points    
-    parties.forEach((party) => {
+    sortedParties.forEach((party) => {
         console.log(party.name + ' ' + party.votes);
     })
 }

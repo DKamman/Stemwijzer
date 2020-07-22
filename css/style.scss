@@ -85,7 +85,7 @@
         margin: 0 auto;
 
         #content {
-            padding: 5rem 6.5rem 0rem;
+            padding: 5rem 6.5rem 5rem;
             min-height: 450px;
 
             #title {
@@ -116,6 +116,25 @@
 
                 img {
                     width: 25px;
+                }
+            }
+
+            #result {
+                h3 {
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                    text-align: center;
+                }
+                .title {
+                    font-size: 2rem;
+                    text-align: center;
+                    color: #01b4dc;
+                    font-weight: bold;
+                    padding: 2rem .5rem 0rem;
+                }
+
+                .votes {
+                    text-align: center;
                 }
             }
         }

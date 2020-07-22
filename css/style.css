@@ -55,7 +55,7 @@
     width: 1300px;
     margin: 0 auto; }
     .main-content .lijst #content {
-      padding: 5rem 6.5rem 0rem;
+      padding: 5rem 6.5rem 5rem;
       min-height: 450px; }
       .main-content .lijst #content #title {
         font-size: 2rem;
@@ -78,6 +78,18 @@
           margin-left: 0px; }
         .main-content .lijst #content #previous img {
           width: 25px; }
+      .main-content .lijst #content #result h3 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        text-align: center; }
+      .main-content .lijst #content #result .title {
+        font-size: 2rem;
+        text-align: center;
+        color: #01b4dc;
+        font-weight: bold;
+        padding: 2rem .5rem 0rem; }
+      .main-content .lijst #content #result .votes {
+        text-align: center; }
     .main-content .lijst .buttons {
       background-color: white;
       padding-left: 10.5rem;

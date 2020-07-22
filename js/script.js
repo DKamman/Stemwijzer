@@ -14,6 +14,11 @@ var start = document.getElementById('start');
 var list = document.getElementById('list');
 var result = document.getElementById('result');
 
+var resultsRow = document.getElementById('resultsRow');
+var div = document.createElement('div');
+var resultTitle = document.createElement('div');
+var resultVotes = document.createElement('div')
+
 function startStemWijzer () {
     console.log(subjects);
     console.log(parties);
@@ -193,7 +198,19 @@ function answerMatch() {
     // console logs all assigned vote points    
     sortedParties.forEach((party) => {
         console.log(party.name + ' ' + party.votes);
+
+        div.setAttribute('class', 'col-md-3');
+        resultTitle.setAttribute('class', 'title')
+        resultTitle.setAttribute('id', 'resultTitle')
+        resultVotes.setAttribute('class', 'votes')
+        resultVotes.setAttribute('id', 'resultVotes')
+
+        resultsRow.appendChild(div);
+        
+        
     })
+
+
 }
 
 //debugging

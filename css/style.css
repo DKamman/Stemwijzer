@@ -89,7 +89,8 @@
         font-weight: bold;
         padding: 2rem .5rem 0rem; }
       .main-content .lijst #content #result .votes {
-        text-align: center; }
+        text-align: center;
+        font-weight: bold; }
     .main-content .lijst .buttons {
       background-color: white;
       padding-left: 10.5rem;

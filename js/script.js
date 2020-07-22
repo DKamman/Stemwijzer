@@ -14,7 +14,7 @@ var neutral = document.getElementById('neutral');
 var start = document.getElementById('start');
 var list = document.getElementById('list');
 
-var end = document.getElementById('result');
+var result = document.getElementById('result');
 
 function startStemWijzer () {
     console.log(subjects);
@@ -30,16 +30,6 @@ function displayStatement(index) {
 
     answerCheck();
     // debuggAnswers();
-}
-
-function displayResults() {
-    buttons.style.display = 'none';
-    title.style.display = 'none';
-    statement.style.display = 'none';
-
-    end.style.display = 'block';
-
-    answerMatch();
 }
 
 function agreeQuestion() {
@@ -102,6 +92,7 @@ function answerCheck() {
             disagree.classList.remove('selectedButton');
             neutral.classList.remove('selectedButton');
             break;
+
         case 'contra':
             disagree.classList.add('selectedButton');
             agree.classList.add('unselectedButton');
@@ -111,6 +102,7 @@ function answerCheck() {
             disagree.classList.remove('unselectedButton');
             neutral.classList.remove('selectedButton');
             break;
+
         case 'none':
             neutral.classList.add('selectedButton');
             agree.classList.add('unselectedButton');
@@ -120,6 +112,7 @@ function answerCheck() {
             disagree.classList.remove('selectedButton');
             neutral.classList.remove('unselectedButton');
             break;
+            
         default:
             agree.classList.add('unselectedButton');
             disagree.classList.add('unselectedButton');
@@ -150,19 +143,24 @@ function checkEnd() {
 // The answerMatch function goes over all your answers and matches them to the opinions of the parties
 function answerMatch() {
 
-    // Resets all party vote point to 0 at the beginning of the answerMatch() function
+    // add and clear votes (number of answer matches) for parties
     parties.forEach((party) => {
         party.votes = 0;
-
-        console.log(party.name + ' ' + party.votes)
     })
 
-    answers.forEach((answer, indexAnswer) => {                                                           // Loops through anwsers
-        console.log('Answer to question ' + (indexAnswer+1) + ' = ' + answer);
+    // Iterate through answers
+    answers.forEach((answer, indexAnswer) => {
 
-        subjects[indexAnswer].parties.forEach((party, indexParty) => {                                   // Loops through subjects per eacht anwser        
-            console.log('Position of ' + party.name + ' = ' + party.position);
+        // Iterate through coresponding parties
+        subjects[indexAnswer].parties.forEach((party, indexParty) => {
+            const currentParty = parties.find(parties => parties.name === party.name);
+            // console.log(currentParty);
 
+            // if my answer for current query is equal to the party its answer then
+            // find corresponding party in parties en increment its score
+            if (party.position === answer) {
+                currentParty.votes++      
+            }
         });
         
     });    
@@ -173,6 +171,15 @@ function answerMatch() {
     })
 }
 
+function displayResults() {
+    buttons.style.display = 'none';
+    title.style.display = 'none';
+    statement.style.display = 'none';
+
+    result.style.display = 'block';
+
+    answerMatch();
+}
 
 //debugging
 function debuggAnswers() {

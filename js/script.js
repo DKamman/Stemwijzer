@@ -4,7 +4,6 @@ var results = false;
 
 var title = document.getElementById('title');
 var statement = document.getElementById('statement');
-
 var buttons = document.getElementById('buttonBlock');
 
 var agree = document.getElementById('agree');
@@ -13,7 +12,6 @@ var neutral = document.getElementById('neutral');
 
 var start = document.getElementById('start');
 var list = document.getElementById('list');
-
 var result = document.getElementById('result');
 
 function startStemWijzer () {
@@ -24,10 +22,15 @@ function startStemWijzer () {
     displayStatement(0);
 }
 
+/**
+ * Returns a title and statement of the subjects array equal to given index
+ * 
+ * @param {number} index given from indexCheck()
+ * @return {object} statement from subjects array
+ */
 function displayStatement(index) {
     title.innerHTML = (index+1).toString() + '. ' + subjects[index].title;
     statement.innerHTML = subjects[index].statement;
-
     answerCheck();
     // debuggAnswers();
 }
@@ -35,17 +38,14 @@ function displayStatement(index) {
 function agreeQuestion() {
     answers[index] = 'pro';
     checkEnd();
-    
     indexCheck();
     displayStatement(index);
-
     // debugg();
 }
 
 function disagreeQuestion() {
     answers[index] = 'contra';
     checkEnd();
-
     indexCheck();
     displayStatement(index);
 }
@@ -53,7 +53,6 @@ function disagreeQuestion() {
 function neutralQuestion() {
     answers[index] = 'none';
     checkEnd();
-
     indexCheck();
     displayStatement(index);
 }
@@ -61,7 +60,6 @@ function neutralQuestion() {
 function skipQuestion() {
     answers[index] = '';
     checkEnd();
-
     indexCheck();
     displayStatement(index);
 }
@@ -136,11 +134,22 @@ function checkEnd() {
         console.log('This is the end');
         results = true;
         displayResults();
-        // answerMatch();
     }
 }
 
-// The answerMatch function goes over all your answers and matches them to the opinions of the parties
+function displayResults() {
+    buttons.style.display = 'none';
+    title.style.display = 'none';
+    statement.style.display = 'none';
+    result.style.display = 'block';
+    answerMatch();
+}
+
+/**
+ * Returns array of numbers
+ * 
+ * @return {array} of parties with corresponding votes
+ */
 function answerMatch() {
 
     // add and clear votes (number of answer matches) for parties
@@ -169,16 +178,6 @@ function answerMatch() {
     parties.forEach((party) => {
         console.log(party.name + ' ' + party.votes);
     })
-}
-
-function displayResults() {
-    buttons.style.display = 'none';
-    title.style.display = 'none';
-    statement.style.display = 'none';
-
-    result.style.display = 'block';
-
-    answerMatch();
 }
 
 //debugging

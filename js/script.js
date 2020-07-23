@@ -1,6 +1,8 @@
 var answers = [];
 var index = 0;
 var results = false;
+var sortedParties = [];
+const seats = 15;
 
 var title = document.getElementById('title');
 var statement = document.getElementById('statement');
@@ -143,6 +145,49 @@ function displayResults() {
     statement.style.display = 'none';
     result.style.display = 'block';
     answerMatch();
+    buildResults();
+}
+
+function secularOnly() {
+    while (resultsRow.firstChild) {
+        resultsRow.removeChild(resultsRow.lastChild);
+    }
+    sortedParties = [];
+
+    parties.forEach(party => {
+        if (party.secular == true) {
+        sortedParties.push(party);
+        }
+    })
+
+    sortedParties.sort(compare);
+
+    console.log(sortedParties);
+
+    showSecularButton = document.getElementById('showSecularButton');
+    showSecularButton.style.display = 'none';
+    showAllButton = document.getElementById('showAllButton');
+    showAllButton.style.display = 'block';
+    buildResults();
+}
+
+// Sort parties on votes
+/**
+ * 
+ * @param {number} a 
+ * @param {number} b 
+ */
+function compare(a, b) {
+    const aVotes = a.votes;
+    const bVotes = b.votes;
+
+    let comparison = 0;
+    if (aVotes < bVotes) {
+        comparison = 1;
+    } else if (aVotes > bVotes) {
+        comparison = -1;
+    }
+    return comparison;
 }
 
 /**
@@ -151,6 +196,10 @@ function displayResults() {
  * @return {array} of parties with corresponding votes
  */
 function answerMatch() {
+
+    // resets buttons
+    showSecularButton.style.display = 'block';
+    showAllButton.style.display = 'none';
 
     // add and clear votes (number of answer matches) for parties
     parties.forEach((party) => {
@@ -175,24 +224,20 @@ function answerMatch() {
     });
 
     // Sort parties on votes
-    function compare(a, b) {
-        const aVotes = a.votes;
-        const bVotes = b.votes;
-
-        let comparison = 0;
-        if (aVotes < bVotes) {
-            comparison = 1;
-        } else if (aVotes > bVotes) {
-            comparison = -1;
-        }
-        return comparison;
-    }
-
-    var sortedParties = parties.slice().sort(compare);
+    sortedParties = parties.slice().sort(compare);
     
     // console logs all assigned vote points and adds them to the DOM    
     sortedParties.forEach((party) => {
         console.log(party.name + ' ' + party.votes);
+    })
+}
+
+function buildResults() {
+    while (resultsRow.firstChild) {
+        resultsRow.removeChild(resultsRow.lastChild);
+    }
+    
+    sortedParties.forEach((party) => {
 
         var resultsRow = document.getElementById('resultsRow');
 
@@ -213,8 +258,6 @@ function answerMatch() {
         resultTitle.innerHTML = party.name;
         resultVotes.innerHTML = 'Overeenkomende antwoorden: ' + party.votes;
     })
-
-
 }
 
 //debugging

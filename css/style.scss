@@ -120,6 +120,9 @@
             }
 
             #result {
+                max-height: 1000px;
+                overflow: scroll;
+                
                 h3 {
                     margin-top: 1rem;
                     margin-bottom: 1rem;

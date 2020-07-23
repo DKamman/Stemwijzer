@@ -78,40 +78,43 @@
           margin-left: 0px; }
         .main-content .lijst #content #previous img {
           width: 25px; }
-      .main-content .lijst #content #result h3 {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        text-align: center; }
-      .main-content .lijst #content #result .title {
-        font-size: 2rem;
-        text-align: center;
-        color: #01b4dc;
-        font-weight: bold;
-        padding: 2rem .5rem 0rem;
-        min-height: 128px; }
-      .main-content .lijst #content #result .votes {
-        text-align: center;
-        font-weight: bold; }
-      .main-content .lijst #content #result .result-buttons {
-        padding-top: 100px; }
-        .main-content .lijst #content #result .result-buttons input {
-          margin: 0 .5rem 0 0; }
-          .main-content .lijst #content #result .result-buttons input:nth-child(3) {
-            margin: 0 .5rem 0 1.5rem; }
-        .main-content .lijst #content #result .result-buttons span {
+      .main-content .lijst #content #result {
+        max-height: 1000px;
+        overflow: scroll; }
+        .main-content .lijst #content #result h3 {
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+          text-align: center; }
+        .main-content .lijst #content #result .title {
+          font-size: 2rem;
+          text-align: center;
+          color: #01b4dc;
+          font-weight: bold;
+          padding: 2rem .5rem 0rem;
+          min-height: 128px; }
+        .main-content .lijst #content #result .votes {
+          text-align: center;
           font-weight: bold; }
-        .main-content .lijst #content #result .result-buttons button {
-          margin-left: 1rem;
-          border: none;
-          border-radius: 5px;
-          background-color: #018aa9;
-          color: white;
-          font-weight: bold; }
-        .main-content .lijst #content #result .result-buttons p {
-          font-size: .9rem;
-          color: #afafaf; }
-          .main-content .lijst #content #result .result-buttons p span {
-            color: #414141; }
+        .main-content .lijst #content #result .result-buttons {
+          padding-top: 100px; }
+          .main-content .lijst #content #result .result-buttons input {
+            margin: 0 .5rem 0 0; }
+            .main-content .lijst #content #result .result-buttons input:nth-child(3) {
+              margin: 0 .5rem 0 1.5rem; }
+          .main-content .lijst #content #result .result-buttons span {
+            font-weight: bold; }
+          .main-content .lijst #content #result .result-buttons button {
+            margin-left: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #018aa9;
+            color: white;
+            font-weight: bold; }
+          .main-content .lijst #content #result .result-buttons p {
+            font-size: .9rem;
+            color: #afafaf; }
+            .main-content .lijst #content #result .result-buttons p span {
+              color: #414141; }
     .main-content .lijst .buttons {
       background-color: white;
       padding-left: 10.5rem;

@@ -18,6 +18,8 @@ var start = document.getElementById('start');
 var list = document.getElementById('list');
 var result = document.getElementById('result');
 
+
+
 function startStemWijzer () {
     console.log(subjects);
     console.log(parties);
@@ -146,6 +148,8 @@ function displayResults() {
     title.style.display = 'none';
     statement.style.display = 'none';
     result.style.display = 'block';
+    secular.checked = false;
+    bigParties.checked = false;
     answerMatch();
     buildResults();
 }
@@ -219,6 +223,7 @@ function filter() {
     if (sortedParties.length == 0) {
         allParties();
     } else {
+        sortedParties.sort(compare);
         buildResults();
     }
 

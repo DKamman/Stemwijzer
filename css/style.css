@@ -87,7 +87,8 @@
         text-align: center;
         color: #01b4dc;
         font-weight: bold;
-        padding: 2rem .5rem 0rem; }
+        padding: 2rem .5rem 0rem;
+        min-height: 128px; }
       .main-content .lijst #content #result .votes {
         text-align: center;
         font-weight: bold; }

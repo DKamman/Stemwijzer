@@ -14,11 +14,6 @@ var start = document.getElementById('start');
 var list = document.getElementById('list');
 var result = document.getElementById('result');
 
-var resultsRow = document.getElementById('resultsRow');
-var div = document.createElement('div');
-var resultTitle = document.createElement('div');
-var resultVotes = document.createElement('div')
-
 function startStemWijzer () {
     console.log(subjects);
     console.log(parties);
@@ -195,19 +190,28 @@ function answerMatch() {
 
     var sortedParties = parties.slice().sort(compare);
     
-    // console logs all assigned vote points    
+    // console logs all assigned vote points and adds them to the DOM    
     sortedParties.forEach((party) => {
         console.log(party.name + ' ' + party.votes);
 
+        var resultsRow = document.getElementById('resultsRow');
+
+        var div = document.createElement('div');
         div.setAttribute('class', 'col-md-3');
+
+        var resultTitle = document.createElement('div');
         resultTitle.setAttribute('class', 'title')
         resultTitle.setAttribute('id', 'resultTitle')
+
+        var resultVotes = document.createElement('div')
         resultVotes.setAttribute('class', 'votes')
         resultVotes.setAttribute('id', 'resultVotes')
 
         resultsRow.appendChild(div);
-        
-        
+        div.appendChild(resultTitle);
+        div.appendChild(resultVotes);
+        resultTitle.innerHTML = party.name;
+        resultVotes.innerHTML = 'Overeenkomende antwoorden: ' + party.votes;
     })
 
 

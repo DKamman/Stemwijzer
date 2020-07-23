@@ -2,6 +2,8 @@ var answers = [];
 var index = 0;
 var results = false;
 var sortedParties = [];
+
+// Defines a large party, by the number of seats
 const seats = 15;
 
 var title = document.getElementById('title');
@@ -166,8 +168,40 @@ function secularOnly() {
 
     showSecularButton = document.getElementById('showSecularButton');
     showSecularButton.style.display = 'none';
+    showBigPartiesButton = document.getElementById('showBigPartiesButton');
+    showBigPartiesButton.style.display = 'block';
     showAllButton = document.getElementById('showAllButton');
     showAllButton.style.display = 'block';
+    buildResults();
+}
+
+function bigPartiesOnly() {
+    while (resultsRow.firstChild) {
+        resultsRow.removeChild(resultsRow.lastChild);
+    }
+    sortedParties = [];
+
+    parties.forEach(party => {
+        if (party.size >= seats) {
+        sortedParties.push(party);
+        }
+    })
+
+    sortedParties.sort(compare);
+
+    console.log(sortedParties);
+
+    showSecularButton = document.getElementById('showSecularButton');
+    showSecularButton.style.display = 'block';
+    showBigPartiesButton = document.getElementById('showBigPartiesButton');
+    showBigPartiesButton.style.display = 'none';
+    showAllButton = document.getElementById('showAllButton');
+    showAllButton.style.display = 'block';
+    buildResults();
+}
+
+function allParties() {
+    answerMatch();
     buildResults();
 }
 
@@ -196,9 +230,12 @@ function compare(a, b) {
  * @return {array} of parties with corresponding votes
  */
 function answerMatch() {
+    
+    sortedParties = [];
 
     // resets buttons
     showSecularButton.style.display = 'block';
+    showBigPartiesButton.style.display = 'block';
     showAllButton.style.display = 'none';
 
     // add and clear votes (number of answer matches) for parties

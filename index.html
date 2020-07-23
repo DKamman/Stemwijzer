@@ -64,9 +64,14 @@
 
                         </div>
                         <div class="result-buttons">
-                            <button id="showSecularButton" onclick="secularOnly()">Alleen de seculiere partijen weergeven</button>
+                            <!-- <button id="showSecularButton" onclick="secularOnly()">Alleen de seculiere partijen weergeven</button>
                             <button id="showBigPartiesButton" onclick="bigPartiesOnly()">Alleen grote partijen weergeven</button>
-                            <button id="showAllButton" onclick="allParties()" style="display: none;">Alle partijen weergeven</button>
+                            <button id="showAllButton" onclick="allParties()" style="display: none;">Alle partijen weergeven</button> -->
+                            
+                            <input id="secular" type="checkbox"><span>Seculiere Partijen</span>
+                            <input id="bigParties" type="checkbox"><span>Grote Partijen</span>
+                            <button onclick="filter()">Filter</button><span>*</span>
+                            <p><span>*</span>Onvink alles voor alle partijen</p>
                         </div>
                     </div>
                 </div>

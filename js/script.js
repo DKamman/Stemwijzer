@@ -150,55 +150,55 @@ function displayResults() {
     buildResults();
 }
 
-function secularOnly() {
-    while (resultsRow.firstChild) {
-        resultsRow.removeChild(resultsRow.lastChild);
-    }
-    sortedParties = [];
+// function secularOnly() {
+//     while (resultsRow.firstChild) {
+//         resultsRow.removeChild(resultsRow.lastChild);
+//     }
+//     sortedParties = [];
 
-    parties.forEach(party => {
-        if (party.secular == true) {
-        sortedParties.push(party);
-        }
-    })
+//     parties.forEach(party => {
+//         if (party.secular == true) {
+//         sortedParties.push(party);
+//         }
+//     })
 
-    sortedParties.sort(compare);
+//     sortedParties.sort(compare);
 
-    console.log(sortedParties);
+//     console.log(sortedParties);
 
-    showSecularButton = document.getElementById('showSecularButton');
-    showSecularButton.style.display = 'none';
-    showBigPartiesButton = document.getElementById('showBigPartiesButton');
-    showBigPartiesButton.style.display = 'block';
-    showAllButton = document.getElementById('showAllButton');
-    showAllButton.style.display = 'block';
-    buildResults();
-}
+//     showSecularButton = document.getElementById('showSecularButton');
+//     showSecularButton.style.display = 'none';
+//     showBigPartiesButton = document.getElementById('showBigPartiesButton');
+//     showBigPartiesButton.style.display = 'block';
+//     showAllButton = document.getElementById('showAllButton');
+//     showAllButton.style.display = 'block';
+//     buildResults();
+// }
 
-function bigPartiesOnly() {
-    while (resultsRow.firstChild) {
-        resultsRow.removeChild(resultsRow.lastChild);
-    }
-    sortedParties = [];
+// function bigPartiesOnly() {
+//     while (resultsRow.firstChild) {
+//         resultsRow.removeChild(resultsRow.lastChild);
+//     }
+//     sortedParties = [];
 
-    parties.forEach(party => {
-        if (party.size >= seats) {
-        sortedParties.push(party);
-        }
-    })
+//     parties.forEach(party => {
+//         if (party.size >= seats) {
+//         sortedParties.push(party);
+//         }
+//     })
 
-    sortedParties.sort(compare);
+//     sortedParties.sort(compare);
 
-    console.log(sortedParties);
+//     console.log(sortedParties);
 
-    showSecularButton = document.getElementById('showSecularButton');
-    showSecularButton.style.display = 'block';
-    showBigPartiesButton = document.getElementById('showBigPartiesButton');
-    showBigPartiesButton.style.display = 'none';
-    showAllButton = document.getElementById('showAllButton');
-    showAllButton.style.display = 'block';
-    buildResults();
-}
+//     showSecularButton = document.getElementById('showSecularButton');
+//     showSecularButton.style.display = 'block';
+//     showBigPartiesButton = document.getElementById('showBigPartiesButton');
+//     showBigPartiesButton.style.display = 'none';
+//     showAllButton = document.getElementById('showAllButton');
+//     showAllButton.style.display = 'block';
+//     buildResults();
+// }
 
 function allParties() {
     answerMatch();
@@ -224,6 +224,57 @@ function compare(a, b) {
     return comparison;
 }
 
+function filter() {
+    while (resultsRow.firstChild) {
+        resultsRow.removeChild(resultsRow.lastChild);
+    }
+
+    sortedParties = [];
+
+    console.log(secular.checked);
+    console.log(bigParties.checked);
+
+    console.log(sortedParties);
+
+    parties.forEach(party => {
+        if (secular.checked == true && bigParties.checked == true && party.secular == true && party.size >= seats) {
+            sortedParties.push(party);
+        }else if (secular.checked == true && bigParties.checked == false && party.secular == true) {
+            sortedParties.push(party);
+        }else if (secular.checked == false && bigParties.checked == true && party.secular == false && party.size >= seats) {
+            sortedParties.push(party);
+        }else if (secular.checked == false && bigParties.checked == true && party.secular == true && party.size >= seats) {
+            sortedParties.push(party);
+        }
+    })
+
+// Alternate version of above forEach loop
+    // parties.forEach(party => {
+    //     if (secular.checked == true && bigParties.checked == true) {
+    //         if (party.secular == true && party.size >= seats) {
+    //             sortedParties.push(party);
+    //         }
+    //     } else if (secular.checked == true && bigParties.checked == false) {
+    //         if (party.secular == true) {
+    //             sortedParties.push(party);
+    //         }
+    //     } else if (secular.checked == false && bigParties.checked == true) {
+    //         if (party.size >= seats) {
+    //             sortedParties.push(party);
+    //         }
+    //     }
+    // })
+
+
+    if (sortedParties.length == 0) {
+        allParties();
+    } else {
+        buildResults();
+    }
+
+    console.log(sortedParties);
+}
+
 /**
  * Returns array of numbers
  * 
@@ -234,9 +285,9 @@ function answerMatch() {
     sortedParties = [];
 
     // resets buttons
-    showSecularButton.style.display = 'block';
-    showBigPartiesButton.style.display = 'block';
-    showAllButton.style.display = 'none';
+    // showSecularButton.style.display = 'block';
+    // showBigPartiesButton.style.display = 'block';
+    // showAllButton.style.display = 'none';
 
     // add and clear votes (number of answer matches) for parties
     parties.forEach((party) => {

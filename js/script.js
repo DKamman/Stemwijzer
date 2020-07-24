@@ -17,7 +17,8 @@ var neutral = document.getElementById('neutral');
 var start = document.getElementById('start');
 var list = document.getElementById('list');
 var result = document.getElementById('result');
-
+var importantButton = document.getElementById('importantButton');
+var importantCheckbox = document.getElementById('importantCheckbox');
 
 
 function startStemWijzer () {
@@ -36,35 +37,66 @@ function startStemWijzer () {
  */
 function displayStatement(index) {
     title.innerHTML = (index+1).toString() + '. ' + subjects[index].title;
-    statement.innerHTML = subjects[index].statement;
-    answerCheck();
-    // debuggAnswers();
+    statement.innerHTML = subjects[index].statement;    
+    if (answers[index] != undefined) {
+        if (answers[index].important == true) {
+            importantCheckbox.checked = true;
+        } else {
+            importantCheckbox.checked = false;
+        }
+        answerCheck();
+    }
+    debuggAnswers();
+}
+
+function importantCheck() {
+    if (importantCheckbox.checked == true) {
+        answers[index].important = true;
+        console.log(answers[index].important);
+    }
 }
 
 function agreeQuestion() {
-    answers[index] = 'pro';
+    answers[index] = 
+    {
+        opinion: 'pro',
+        important: false
+    };
+    importantCheck();
     checkEnd();
     indexCheck();
     displayStatement(index);
-    // debugg();
+    debugg();
 }
 
 function disagreeQuestion() {
-    answers[index] = 'contra';
+    answers[index] = 
+    {
+        opinion: 'contra',
+        important: false
+    };
     checkEnd();
     indexCheck();
     displayStatement(index);
 }
 
 function neutralQuestion() {
-    answers[index] = 'none';
+    answers[index] = 
+    {
+        opinion: 'none',
+        important: false
+    };
     checkEnd();
     indexCheck();
     displayStatement(index);
 }
 
 function skipQuestion() {
-    answers[index] = '';
+    answers[index] = 
+    {
+        opinion: '',
+        important: false
+    };
     checkEnd();
     indexCheck();
     displayStatement(index);
@@ -76,6 +108,7 @@ function previousQuestion() {
         buttons.style.display = 'block';
         title.style.display = 'block';
         statement.style.display = 'block';
+        importantButton.style.display = 'block';
         result.style.display = 'none';
     }
     if (results === false && index > 0) {
@@ -86,7 +119,7 @@ function previousQuestion() {
 }
 
 function answerCheck() {
-    switch(answers[index]) {
+    switch(answers[index].opinion) {
         case 'pro':
             agree.classList.add('selectedButton');
             disagree.classList.add('unselectedButton');
@@ -147,6 +180,7 @@ function displayResults() {
     buttons.style.display = 'none';
     title.style.display = 'none';
     statement.style.display = 'none';
+    importantButton.style.display = 'none';
     result.style.display = 'block';
     secular.checked = false;
     bigParties.checked = false;
@@ -254,8 +288,11 @@ function answerMatch() {
 
             // if my answer for current query is equal to the party its answer then
             // find corresponding party in parties en increment its score
-            if (party.position === answer) {
-                currentParty.votes++      
+            if (party.position === answer.opinion) {
+                currentParty.votes++;
+                if (answer.important == true) {
+                    currentParty.votes++;
+                }    
             }
         });
         

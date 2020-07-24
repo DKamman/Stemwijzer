@@ -176,6 +176,15 @@
                     }
                 }
             }
+
+            .important-button {
+                padding-left: 65px;
+    
+                span {
+                    padding-left: .5rem;
+                    font-weight: bold;
+                }
+            }
         }
 
         .buttons {

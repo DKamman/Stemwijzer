@@ -115,6 +115,11 @@
             color: #afafaf; }
             .main-content .lijst #content #result .result-buttons p span {
               color: #414141; }
+      .main-content .lijst #content .important-button {
+        padding-left: 65px; }
+        .main-content .lijst #content .important-button span {
+          padding-left: .5rem;
+          font-weight: bold; }
     .main-content .lijst .buttons {
       background-color: white;
       padding-left: 10.5rem;

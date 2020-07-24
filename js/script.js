@@ -36,6 +36,7 @@ function startStemWijzer () {
  * @return {object} statement from subjects array
  */
 function displayStatement(index) {
+    console.log(answers[index]);
     title.innerHTML = (index+1).toString() + '. ' + subjects[index].title;
     statement.innerHTML = subjects[index].statement;    
     if (answers[index] != undefined) {
@@ -45,6 +46,14 @@ function displayStatement(index) {
             importantCheckbox.checked = false;
         }
         answerCheck();
+    } else {
+        agree.classList.add('unselectedButton');
+        disagree.classList.add('unselectedButton');
+        neutral.classList.add('unselectedButton');
+
+        agree.classList.remove('selectedButton');
+        disagree.classList.remove('selectedButton');
+        neutral.classList.remove('selectedButton');
     }
     debuggAnswers();
 }
@@ -148,17 +157,7 @@ function answerCheck() {
             agree.classList.remove('selectedButton');
             disagree.classList.remove('selectedButton');
             neutral.classList.remove('unselectedButton');
-            break;
-            
-        default:
-            agree.classList.add('unselectedButton');
-            disagree.classList.add('unselectedButton');
-            neutral.classList.add('unselectedButton');
-
-            agree.classList.remove('selectedButton');
-            disagree.classList.remove('selectedButton');
-            neutral.classList.remove('selectedButton');
-            break;     
+            break; 
     }
 }
 

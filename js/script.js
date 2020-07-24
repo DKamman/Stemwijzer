@@ -22,8 +22,6 @@ var importantCheckbox = document.getElementById('importantCheckbox');
 
 
 function startStemWijzer () {
-    console.log(subjects);
-    console.log(parties);
     start.remove();
     list.style.display = 'block';
     displayStatement(0);
@@ -36,7 +34,6 @@ function startStemWijzer () {
  * @return {object} statement from subjects array
  */
 function displayStatement(index) {
-    console.log(answers[index]);
     title.innerHTML = (index+1).toString() + '. ' + subjects[index].title;
     statement.innerHTML = subjects[index].statement;    
     if (answers[index] != undefined) {
@@ -47,6 +44,8 @@ function displayStatement(index) {
         }
         answerCheck();
     } else {
+        importantCheckbox.checked = false;
+
         agree.classList.add('unselectedButton');
         disagree.classList.add('unselectedButton');
         neutral.classList.add('unselectedButton');
@@ -55,13 +54,12 @@ function displayStatement(index) {
         disagree.classList.remove('selectedButton');
         neutral.classList.remove('selectedButton');
     }
-    debuggAnswers();
+    // debuggAnswers();
 }
 
 function importantCheck() {
     if (importantCheckbox.checked == true) {
         answers[index].important = true;
-        console.log(answers[index].important);
     }
 }
 
@@ -75,7 +73,7 @@ function agreeQuestion() {
     checkEnd();
     indexCheck();
     displayStatement(index);
-    debugg();
+    // debugg();
 }
 
 function disagreeQuestion() {
@@ -84,6 +82,7 @@ function disagreeQuestion() {
         opinion: 'contra',
         important: false
     };
+    importantCheck()
     checkEnd();
     indexCheck();
     displayStatement(index);
@@ -95,6 +94,7 @@ function neutralQuestion() {
         opinion: 'none',
         important: false
     };
+    importantCheck();
     checkEnd();
     indexCheck();
     displayStatement(index);
@@ -169,7 +169,6 @@ function indexCheck() {
 
 function checkEnd() {
     if (index == (subjects.length-1) && answers.length == subjects.length) {
-        console.log('This is the end');
         results = true;
         displayResults();
     }
@@ -218,11 +217,6 @@ function filter() {
 
     sortedParties = [];
 
-    console.log(secular.checked);
-    console.log(bigParties.checked);
-
-    console.log(sortedParties);
-
     parties.forEach(party => {
         if (secular.checked == true && bigParties.checked == true && party.secular == true && party.size >= seats) {
             sortedParties.push(party);
@@ -260,7 +254,7 @@ function filter() {
         buildResults();
     }
 
-    console.log(sortedParties);
+    // console.log(sortedParties);
 }
 
 /**
@@ -272,7 +266,7 @@ function answerMatch() {
     
     sortedParties = [];
 
-    // add and clear votes (number of answer matches) for parties
+    // Add and clear votes (number of answer matches) for parties
     parties.forEach((party) => {
         party.votes = 0;
     })
@@ -301,9 +295,9 @@ function answerMatch() {
     sortedParties = parties.slice().sort(compare);
     
     // console logs all assigned vote points and adds them to the DOM    
-    sortedParties.forEach((party) => {
-        console.log(party.name + ' ' + party.votes);
-    })
+    // sortedParties.forEach((party) => {
+    //     console.log(party.name + ' ' + party.votes);
+    // })
 }
 
 function buildResults() {

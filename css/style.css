@@ -56,7 +56,7 @@
     margin: 0 auto; }
     .main-content .lijst #content {
       padding: 5rem 6.5rem 5rem;
-      min-height: 450px; }
+      min-height: 507px; }
       .main-content .lijst #content #title {
         font-size: 2rem;
         color: #01b4dc;
@@ -64,7 +64,8 @@
         padding: 3rem 4rem 1rem; }
       .main-content .lijst #content #statement {
         padding: 0rem 4rem 1rem;
-        font-size: 2rem; }
+        font-size: 2rem;
+        min-height: 170px; }
       .main-content .lijst #content #previous {
         border-radius: 50%;
         border: none;
